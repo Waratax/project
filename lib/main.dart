@@ -10,16 +10,15 @@ Map<String, WidgetBuilder> phoneRoutes = {
   '/mainScreen': (context) => MainScreen(),
 };
 
-String phoneHomepage = '/mainScreen';
+String phoneHomeRoutes = '/mainScreen';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [],
-        child: MaterialApp(
-          title: 'Project',
-          initialRoute: phoneHomepage,
-        ));
+    return MaterialApp(
+      title: 'Project',
+      initialRoute: phoneHomeRoutes,
+      routes: phoneRoutes,
+    );
   }
 }
