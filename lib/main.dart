@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:projekt/screens/mainScreen.dart';
+import 'package:projekt/screens/MTG.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,6 +8,7 @@ void main() {
 
 Map<String, WidgetBuilder> phoneRoutes = {
   '/mainScreen': (context) => MainScreen(),
+  '/MTG': (context) => MTGScreen(),
 };
 
 String phoneHomeRoutes = '/mainScreen';

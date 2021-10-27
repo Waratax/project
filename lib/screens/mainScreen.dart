@@ -8,37 +8,40 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        appBar: AppBar(
+          title: Text("GAMES"),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-    );
+        body: Center(
+            child: Column(
+          children: [
+            Expanded(
+                child: Align(
+              alignment: FractionalOffset.bottomCenter,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/MTG"); //magic the gathering
+                  },
+                  child: Text("Play MTG"),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.red,
+                  )),
+            )),
+            Expanded(
+                child: Align(
+              alignment: FractionalOffset.bottomCenter,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/DiceRoll"); //dice rolls
+                  },
+                  child: Text("Play MTG"),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.red,
+                  )),
+            )),
+          ],
+        )));
   }
 }
