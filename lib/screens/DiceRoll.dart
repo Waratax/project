@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class MTGScreen extends StatefulWidget {
-  State<StatefulWidget> createState() => _MTGScreen();
+class DiceScreen extends StatefulWidget {
+  State<StatefulWidget> createState() => _DiceScreen();
 }
 
-class _MTGScreen extends State<MTGScreen> {
+class _DiceScreen extends State<DiceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +18,7 @@ class _MTGScreen extends State<MTGScreen> {
               Expanded(
                   child: Align(
                       alignment: FractionalOffset.topCenter,
-                      child: Text("nigga"))),
+                      child: Text("sampleText"))),
               Spacer(),
 
               //End game
