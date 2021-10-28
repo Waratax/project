@@ -17,30 +17,22 @@ class _MainScreenState extends State<MainScreen> {
         body: Center(
             child: Column(
           children: [
-            Expanded(
-                child: Align(
-              alignment: FractionalOffset.bottomCenter,
-              child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, "/MTG"); //magic the gathering
-                  },
-                  child: Text("Play MTG"),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.red,
-                  )),
-            )),
-            Expanded(
-                child: Align(
-              alignment: FractionalOffset.bottomCenter,
-              child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, "/DiceRoll"); //dice rolls
-                  },
-                  child: Text("Play MTG"),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.red,
-                  )),
-            )),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/MTG"); //magic the gathering
+                },
+                child: Text("Play MTG"),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blueGrey,
+                )),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/DiceRoll"); //dice rolls
+                },
+                child: Text("Play DiceRoll"),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blueGrey,
+                )),
           ],
         )));
   }

@@ -6,6 +6,8 @@ class MTGScreen extends StatefulWidget {
 }
 
 class _MTGScreen extends State<MTGScreen> {
+  var playerLife1 = 20;
+  var playerLife2 = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,37 +17,81 @@ class _MTGScreen extends State<MTGScreen> {
         body: Center(
           child: Column(
             children: [
+              Spacer(),
               Row(
                 children: [
                   Expanded(
                       child: Align(
-                    alignment: FractionalOffset.bottomCenter,
+                    alignment: FractionalOffset.center,
                     child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text("Správně"),
+                        onPressed: () {
+                          setState(() {
+                            playerLife1++;
+                          });
+                        },
+                        child: Text("+"),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.green,
                         )),
                   )),
+                  Text(playerLife1.toString()), //life
                   Expanded(
                       child: Align(
-                    alignment: FractionalOffset.bottomCenter,
+                    alignment: FractionalOffset.center,
                     child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text("Špatně"),
+                        onPressed: () {
+                          setState(() {
+                            playerLife1--;
+                          });
+                        },
+                        child: Text("-"),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.red,
                         )),
                   )),
                 ],
               ),
-
-              //End game
+              Spacer(),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pop(context); //TODO modes
                   },
-                  child: Text("UKONČIT HRU")),
+                  child: Text("Settings")),
+              Spacer(),
+              Row(
+                children: [
+                  Expanded(
+                      child: Align(
+                    alignment: FractionalOffset.center,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            playerLife2++;
+                          });
+                        },
+                        child: Text("+"),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.green,
+                        )),
+                  )),
+                  Text(playerLife2.toString()), //life
+                  Expanded(
+                      child: Align(
+                    alignment: FractionalOffset.center,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            playerLife2--;
+                          });
+                        },
+                        child: Text("-"),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.red,
+                        )),
+                  )),
+                ],
+              ),
+              Spacer(),
             ],
           ),
         ));
