@@ -25,12 +25,19 @@ class _LoginScr extends State<LoginScr> {
                 alignment: FractionalOffset.center,
                 child: Text("enter your password"),
               )),
-
               ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, "/mainScreen");
+                    try {
+                      //TODO find user + password check
+                      Navigator.pushNamed(context, "/mainScreen");
+                    } on Exception {}
                   },
-                  child: Text("register")), //redecet do register az bude
+                  child: Text("login")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/Register");
+                  },
+                  child: Text("register")),
             ],
           ),
         ));

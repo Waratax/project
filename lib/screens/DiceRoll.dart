@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -6,6 +8,7 @@ class DiceScreen extends StatefulWidget {
 }
 
 class _DiceScreen extends State<DiceScreen> {
+  int rollValue = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,9 +21,13 @@ class _DiceScreen extends State<DiceScreen> {
               Expanded(
                   child: Align(
                       alignment: FractionalOffset.topCenter,
-                      child: Text("sampleText"))),
+                      child: Text("Choose your dice"))),
               Spacer(),
-
+              ElevatedButton(
+                  onPressed: () {
+                    rollValue = Random().nextInt(7) + 1;
+                  },
+                  child: Text(rollValue.toString())),
               //End game
               ElevatedButton(
                   onPressed: () {

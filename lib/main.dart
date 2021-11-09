@@ -3,6 +3,7 @@ import 'package:projekt/screens/mainScreen.dart';
 import 'package:projekt/screens/MTG.dart';
 import 'package:projekt/screens/DiceRoll.dart';
 import 'package:projekt/screens/Login.dart';
+import 'package:projekt/screens/Register.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,6 +14,7 @@ Map<String, WidgetBuilder> phoneRoutes = {
   '/MTG': (context) => MTGScreen(),
   '/diceRoll': (context) => DiceScreen(),
   '/login': (context) => LoginScr(),
+  '/register': (context) => RegisterScr(),
 };
 
 String phoneHomeRoutes = '/login';
