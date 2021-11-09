@@ -22,12 +22,11 @@ class _DiceScreen extends State<DiceScreen> {
                   child: Align(
                       alignment: FractionalOffset.topCenter,
                       child: Text("Choose your dice"))),
-              Spacer(),
               ElevatedButton(
                   onPressed: () {
-                    rollValue = Random().nextInt(7) + 1;
+                    rollValue = (Random().nextInt(6)) + 1;
                   },
-                  child: Text(rollValue.toString())),
+                  child: Text("roll")),
               //End game
               ElevatedButton(
                   onPressed: () {

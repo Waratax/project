@@ -28,7 +28,7 @@ class _MainScreenState extends State<MainScreen> {
                 )),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, "/DiceRoll"); //dice rolls
+                  Navigator.pushNamed(context, "/diceRoll"); //dice rolls
                 },
                 child: Text("Play DiceRoll"),
                 style: ElevatedButton.styleFrom(
