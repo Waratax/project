@@ -15,10 +15,24 @@ class _RegisterScr extends State<RegisterScr> {
         body: Center(
           child: Column(
             children: [
-              Text("Username"),
-              Text("E-mail"),
-              Text("password"),
-              Text("again password")
+              TextField(
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), hintText: 'email'),
+              ),
+              TextField(
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), hintText: 'nickname'),
+              ),
+              TextField(
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), hintText: 'password'),
+              ),
+              TextField(
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), hintText: 'password again'),
+              ),
+              ElevatedButton(
+                  onPressed: () {}, child: Text("done")) //TODO work here
             ],
           ),
         ));

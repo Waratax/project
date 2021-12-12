@@ -18,12 +18,20 @@ class _LoginScr extends State<LoginScr> {
               Container(
                   child: Align(
                 alignment: FractionalOffset.center,
-                child: Text("enter your username"),
+                child: TextField(
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter a nickname'),
+                ),
               )),
               Container(
                   child: Align(
                 alignment: FractionalOffset.center,
-                child: Text("enter your password"),
+                child: TextField(
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter a password'),
+                ),
               )),
               ElevatedButton(
                   onPressed: () {
@@ -35,7 +43,7 @@ class _LoginScr extends State<LoginScr> {
                   child: Text("login")),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, "/Register");
+                    Navigator.pushNamed(context, "/register");
                   },
                   child: Text("register")),
             ],
