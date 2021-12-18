@@ -24,12 +24,8 @@ class _MTGScreen extends State<MTGScreen> {
                 children: [
                   Spacer(),
                   Container(
-                      child: Transform(
-                    transform: Matrix4.rotationX(pi),
-                    alignment: Alignment.center,
-                    child: Expanded(
-                        child: Align(
-                      alignment: FractionalOffset.center,
+                    alignment: FractionalOffset.center,
+                    child: Container(
                       child: ElevatedButton(
                           onPressed: () {
                             setState(() {
@@ -40,43 +36,42 @@ class _MTGScreen extends State<MTGScreen> {
                           style: ElevatedButton.styleFrom(
                             primary: Colors.red,
                           )),
-                    )),
-                  )),
+                    ),
+                  ),
                   Spacer(),
                   Container(
                       child: Transform(
                           transform: Matrix4.rotationX(pi),
-                          alignment: Alignment.center,
+                          alignment: FractionalOffset.center,
                           child: Transform(
                               transform: Matrix4.rotationY(pi),
-                              alignment: Alignment.center,
-                              child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text(playerLife1.toString()))))),
+                              alignment: FractionalOffset.center,
+                              child: Text(playerLife1.toString())))),
                   Spacer(),
                   Container(
-                      child: Transform(
-                          transform: Matrix4.rotationX(pi),
-                          alignment: Alignment.center,
-                          child: Expanded(
-                              child: Align(
-                            alignment: FractionalOffset.center,
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    playerLife1++;
-                                  });
-                                },
-                                child: Text("+"),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
-                                )),
-                          )))), //life
+                      alignment: FractionalOffset.center,
+                      child: Container(
+                        child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                playerLife1++;
+                              });
+                            },
+                            child: Text("+"),
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.green,
+                            )),
+                      )), //life
                   Spacer()
                 ],
               ),
               Spacer(),
               Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade300,
+                  shape: BoxShape.circle,
+                ),
+                padding: EdgeInsets.all(4),
                 child: IconButton(
                   icon: Icon(Icons.settings),
                   onPressed: () {
@@ -130,16 +125,12 @@ class _MTGScreen extends State<MTGScreen> {
                             ));
                   },
                 ),
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade300,
-                  shape: BoxShape.circle,
-                ),
-                padding: EdgeInsets.all(4),
               ),
               Spacer(),
               Row(
                 children: [
-                  Expanded(
+                  Spacer(),
+                  Container(
                       child: Align(
                     alignment: FractionalOffset.center,
                     child: ElevatedButton(
@@ -153,8 +144,10 @@ class _MTGScreen extends State<MTGScreen> {
                           primary: Colors.green,
                         )),
                   )),
+                  Spacer(),
                   Text(playerLife2.toString()), //life
-                  Expanded(
+                  Spacer(),
+                  Container(
                       child: Align(
                     alignment: FractionalOffset.center,
                     child: ElevatedButton(
@@ -168,6 +161,7 @@ class _MTGScreen extends State<MTGScreen> {
                           primary: Colors.red,
                         )),
                   )),
+                  Spacer(),
                 ],
               ),
               Spacer(),

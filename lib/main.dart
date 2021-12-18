@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:projekt/screens/mainScreen.dart';
 import 'package:projekt/screens/MTG.dart';
 import 'package:projekt/screens/DiceRoll.dart';
-import 'package:projekt/screens/Login.dart';
-import 'package:projekt/screens/Register.dart';
+import 'package:projekt/screens/log/Login.dart';
+import 'package:projekt/screens/log/Register.dart';
 
 void main() {
   runApp(MyApp());
