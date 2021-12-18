@@ -77,8 +77,8 @@ class _MTGScreen extends State<MTGScreen> {
               ),
               Spacer(),
               Container(
-                child: ElevatedButton(
-                  child: Text("settings"),
+                child: IconButton(
+                  icon: Icon(Icons.settings),
                   onPressed: () {
                     showDialog(
                         context: context,
@@ -130,6 +130,11 @@ class _MTGScreen extends State<MTGScreen> {
                             ));
                   },
                 ),
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade300,
+                  shape: BoxShape.circle,
+                ),
+                padding: EdgeInsets.all(4),
               ),
               Spacer(),
               Row(
