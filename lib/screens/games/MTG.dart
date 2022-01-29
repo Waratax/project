@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:math';
 
-class MTGScreen extends StatefulWidget {
+class MTGScr extends StatefulWidget {
   State<StatefulWidget> createState() => _MTGScreen();
 }
 
-class _MTGScreen extends State<MTGScreen> {
+class _MTGScreen extends State<MTGScr> {
   var playerLife1 = 20;
   var playerLife2 = 20;
 

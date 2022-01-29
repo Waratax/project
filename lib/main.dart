@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:projekt/screens/mainScreen.dart';
-import 'package:projekt/screens/MTG.dart';
-import 'package:projekt/screens/DiceRoll.dart';
 import 'package:projekt/screens/log/Login.dart';
 import 'package:projekt/screens/log/Register.dart';
+import 'package:projekt/screens/games/MTG.dart';
+import 'package:projekt/screens/games/DiceRoll.dart';
+import 'package:projekt/screens/games/Cards.dart';
+import 'package:projekt/screens/games/DiceGame.dart';
+import 'package:projekt/screens/games/LiarsDice.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,10 +14,13 @@ void main() {
 
 Map<String, WidgetBuilder> phoneRoutes = {
   '/mainScreen': (context) => MainScreen(),
-  '/MTG': (context) => MTGScreen(),
-  '/diceRoll': (context) => DiceScreen(),
+  '/MTG': (context) => MTGScr(),
+  '/diceRoll': (context) => DiceScr(),
   '/login': (context) => LoginScr(),
   '/register': (context) => RegisterScr(),
+  '/diceGame': (context) => DiceGameScr(),
+  '/liarsDice': (context) => LiarsDiceScr(),
+  '/cards': (context) => CardsScr(),
 };
 
 String phoneHomeRoutes = '/login';

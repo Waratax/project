@@ -4,8 +4,8 @@ import 'package:flutter_picker/flutter_picker.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:convert';
 
-class DiceScreen extends StatefulWidget {
-  const DiceScreen({Key? key}) : super(key: key);
+class DiceScr extends StatefulWidget {
+  const DiceScr({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _DiceScreen();
@@ -17,7 +17,7 @@ const PickerData = '''[
 [6,4,8,10,12,20]
     ]''';
 
-class _DiceScreen extends State<DiceScreen> {
+class _DiceScreen extends State<DiceScr> {
   int rollValue = 0;
   var diceValue;
 
