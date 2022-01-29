@@ -54,7 +54,10 @@ class _LoginScr extends State<LoginScr> {
                                     content: Text("wrong inputs"),
                                     actions: [
                                       ElevatedButton(
-                                          onPressed: () {}, child: Text("ok"))
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text("ok"))
                                     ],
                                   ));
                         }
