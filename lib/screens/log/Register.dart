@@ -12,8 +12,8 @@ class _RegisterScr extends State<RegisterScr> {
   final passwordControll = TextEditingController();
   final passwordControll2 = TextEditingController();
   List user = [];
-  bool nameIsUsed = false;
-  bool mailIsUsed = false;
+  bool nameIsUsed = true;
+  bool mailIsUsed = true;
 
   @override
   Widget build(BuildContext context) {
@@ -45,19 +45,23 @@ class _RegisterScr extends State<RegisterScr> {
               ),
               ElevatedButton(
                   onPressed: () {
+                    Navigator.pushNamed(context, "/mainScreen");
+
                     for (int i = 0; i < globals.users.length; i++) {
-                      if (globals.users[i][0] == nameControll) {
-                        nameIsUsed = true;
+                      if (globals.users[i][0] != nameControll) {
+                        nameIsUsed = false;
                       }
-                      if (globals.users[i][2] == mailControll) {
-                        mailIsUsed = true;
+                      if (globals.users[i][2] != mailControll) {
+                        mailIsUsed = false;
                       }
-                    } //TODO nameIsUsed and mailIsUsed is broken
+                    } //TODO nameIsUsed and mailIsUsed is broken?
                     if (passwordControll.text == passwordControll2.text &&
                         nameIsUsed == false &&
-                        mailIsUsed == false &&
-                        mailControll.text.contains(RegExp(
-                            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"))) {
+                        mailIsUsed == false)
+                    //&&
+                    //mailControll.text.contains(RegExp(
+                    //r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"))) {
+                    {
                       user.add(nameControll.text);
                       user.add(passwordControll.text);
                       user.add(mailControll.text);
@@ -70,7 +74,10 @@ class _RegisterScr extends State<RegisterScr> {
                                 content: Text("wrong inputs"),
                                 actions: [
                                   ElevatedButton(
-                                      onPressed: () {}, child: Text("ok"))
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text("ok"))
                                 ],
                               ));
                     }

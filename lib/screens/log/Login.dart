@@ -40,6 +40,7 @@ class _LoginScr extends State<LoginScr> {
               )),
               ElevatedButton(
                   onPressed: () {
+                    Navigator.pushNamed(context, "/mainScreen");
                     try {
                       for (int i = 0; i < globals.users.length; i++) {
                         if (globals.users[i][0].toString() ==

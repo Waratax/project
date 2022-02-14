@@ -18,7 +18,7 @@ const PickerData = '''[
     ]''';
 
 class _DiceScreen extends State<DiceScr> {
-  int rollValue = 0;
+  var rollValue;
   var diceValue;
 
   void toggleRoll() {
