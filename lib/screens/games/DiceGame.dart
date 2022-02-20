@@ -303,7 +303,7 @@ class _DiceGameScr extends State<DiceGameScr> {
         pickedDiceValue = null;
         firstRound = true;
         score++;
-
+        throwDice(1);
         for (var i = 0; i <= 5; i++) {
           pickedDices[i] = 0;
           fItMateColorForEachDiceImSadNow[i] = Colors.grey.shade100;
