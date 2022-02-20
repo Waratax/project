@@ -23,7 +23,7 @@ Map<String, WidgetBuilder> phoneRoutes = {
   '/cards': (context) => CardsScr(),
 };
 
-String phoneHomeRoutes = '/login';
+String phoneHomeRoutes = '/mainScreen';
 
 class MyApp extends StatelessWidget {
   @override
