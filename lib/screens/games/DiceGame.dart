@@ -22,7 +22,7 @@ class _DiceGameScr extends State<DiceGameScr> {
   var score = 0;
   bool firstRound = true;
   var pickedDiceValue;
-  var diceThrows = [0, 1, 2, 3, 4, 5];
+  var diceThrows = [0, 1, 2, 3, 4, 4];
   var pickedDices = [0, 0, 0, 0, 0, 0];
   var fItMateColorForEachDiceImSadNow = [
     Colors.grey.shade100,
@@ -52,12 +52,12 @@ class _DiceGameScr extends State<DiceGameScr> {
                       firstRound = false;
                       isAlive();
                       checkScore();
+                      pickedDiceValue = null;
                     },
                     child: Text("Throw dice")),
                 Spacer(),
                 ElevatedButton(
                     onPressed: () {
-                      countScore();
                       throwDice(1);
                     },
                     child: Text("end my round")),
@@ -72,11 +72,10 @@ class _DiceGameScr extends State<DiceGameScr> {
                       setState(() {
                         if (pickedDices[0] == 0) {
                           pickedDices[0] = 1;
-                          if (canBeChecked() == true) {
+                          if (canBeChecked(0) == true) {
                             fItMateColorForEachDiceImSadNow[0] = Colors.yellow;
                           } else {
                             pickedDices[0] = 0;
-                            pickedDiceValue = null;
                           }
                         } else {
                           pickedDices[0] = 1;
@@ -95,11 +94,10 @@ class _DiceGameScr extends State<DiceGameScr> {
                       setState(() {
                         if (pickedDices[1] == 0) {
                           pickedDices[1] = 1;
-                          if (canBeChecked() == true) {
+                          if (canBeChecked(1) == true) {
                             fItMateColorForEachDiceImSadNow[1] = Colors.yellow;
                           } else {
                             pickedDices[1] = 0;
-                            pickedDiceValue = null;
                           }
                         } else {
                           pickedDices[1] = 1;
@@ -122,11 +120,10 @@ class _DiceGameScr extends State<DiceGameScr> {
                       setState(() {
                         if (pickedDices[2] == 0) {
                           pickedDices[2] = 1;
-                          if (canBeChecked() == true) {
+                          if (canBeChecked(2) == true) {
                             fItMateColorForEachDiceImSadNow[2] = Colors.yellow;
                           } else {
                             pickedDices[2] = 0;
-                            pickedDiceValue = null;
                           }
                         } else {
                           pickedDices[2] = 1;
@@ -145,11 +142,10 @@ class _DiceGameScr extends State<DiceGameScr> {
                       setState(() {
                         if (pickedDices[3] == 0) {
                           pickedDices[3] = 1;
-                          if (canBeChecked() == true) {
+                          if (canBeChecked(3) == true) {
                             fItMateColorForEachDiceImSadNow[3] = Colors.yellow;
                           } else {
                             pickedDices[3] = 0;
-                            pickedDiceValue = null;
                           }
                         } else {
                           pickedDices[3] = 1;
@@ -172,11 +168,10 @@ class _DiceGameScr extends State<DiceGameScr> {
                       setState(() {
                         if (pickedDices[4] == 0) {
                           pickedDices[4] = 1;
-                          if (canBeChecked() == true) {
+                          if (canBeChecked(4) == true) {
                             fItMateColorForEachDiceImSadNow[4] = Colors.yellow;
                           } else {
                             pickedDices[4] = 0;
-                            pickedDiceValue = null;
                           }
                         } else {
                           pickedDices[4] = 1;
@@ -195,11 +190,10 @@ class _DiceGameScr extends State<DiceGameScr> {
                       setState(() {
                         if (pickedDices[5] == 0) {
                           pickedDices[5] = 1;
-                          if (canBeChecked() == true) {
+                          if (canBeChecked(5) == true) {
                             fItMateColorForEachDiceImSadNow[5] = Colors.yellow;
                           } else {
                             pickedDices[5] = 0;
-                            pickedDiceValue = null;
                           }
                         } else {
                           pickedDices[5] = 1;
@@ -247,84 +241,166 @@ class _DiceGameScr extends State<DiceGameScr> {
     });
   }
 
-  bool canBeChecked() {
-    if (firstRound == true) {
-      var counter = 0;
-      var temp;
-      if (pickedDiceValue == null) {
-        for (var i = 0; i <= 5; i++) {
-          if (pickedDices[i] == 1) {
-            temp = i;
-            break;
-          }
-        }
-        pickedDiceValue = diceThrows[temp];
-        for (var i = 0; i <= 5; i++) {
-          if (diceThrows[i] == pickedDiceValue) {
+  bool canBeChecked(n) {
+    var counter = 0;
+    if (diceThrows[n] == 0 || diceThrows[n] == 4) {
+      pickedDiceValue = null;
+      return true;
+    } else {
+      pickedDiceValue = null;
+      for (var i = 0; i <= 5; i++) {
+        if (diceThrows[n] != 0 || diceThrows[n] != 4) {
+          if (diceThrows[i] == diceThrows[n]) {
             counter++;
           }
         }
-        if (counter >= 3) {
-          return true;
-        }
-        return false;
       }
 
-      for (var i = 0; i <= 5; i++) {
-        if (pickedDices[i] == 1) {
-          if (diceThrows[i] != pickedDiceValue) {
-            return false;
-          }
-        }
+      if (counter == 3) {
+        return true;
       }
-      return true;
+      return false;
     }
-    return false;
   }
 
   void isAlive() {
     setState(() {
-      firstRound = false;
-      var temp = 0;
-      var nOfD = 0;
+      var help = false;
       for (var i = 0; i <= 5; i++) {
-        if (pickedDices[i] == 1) {
-          nOfD++;
+        if (pickedDices[i] == 0) {
+          if (canBeChecked(i) == true) {
+            help = true;
+            break;
+          }
         }
       }
-      for (var i = 0; i <= 5; i++) {
-        if (diceThrows[i] == pickedDiceValue) {
-          pickedDices[i] = 1;
-          fItMateColorForEachDiceImSadNow[i] = Colors.yellow;
-          temp++;
-        }
-      }
-      if (nOfD == temp) {
-        pickedDiceValue = null;
-        firstRound = true;
-        score++;
+      if (help == false) {
         throwDice(1);
-        for (var i = 0; i <= 5; i++) {
-          pickedDices[i] = 0;
-          fItMateColorForEachDiceImSadNow[i] = Colors.grey.shade100;
-        }
       }
     });
   }
 
   checkScore() {
+    List tempDiceThrows = diceThrows;
+    var counter = 0;
+    var help = false;
+    tempDiceThrows.sort();
     var scoreD = 0;
+
     for (var i = 0; i <= 5; i++) {
-      if (pickedDices[i] == 1) {
-        scoreD += (diceThrows[i] + 1) * 10;
+      if (tempDiceThrows[i] == i) {
+        counter++;
+      }
+      if (counter == 6) {
+        fItMateColorForEachDiceImSadNow = [
+          Colors.yellow,
+          Colors.yellow,
+          Colors.yellow,
+          Colors.yellow,
+          Colors.yellow,
+          Colors.yellow,
+        ];
+        scoreD = 2000;
       }
     }
-    return scoreD;
-  }
+    counter = 0;
+    for (var i = 0; i <= 5; i++) {
+      if (diceThrows[i] != diceThrows[0]) {
+        help = false;
+        break;
+      }
+    }
+    if (help == true) {
+      scoreD = 5000;
+    }
 
-  void countScore() {
-    setState(() {
-      score = -1;
-    });
+    for (var i = 0; i <= 5; i++) {
+      if (pickedDices[i] == 1) {
+        if (diceThrows[i] == 1) {
+          counter++;
+        }
+      }
+    }
+    if (counter == 3) {
+      scoreD += 200;
+    }
+    counter = 0;
+
+    for (var i = 0; i <= 5; i++) {
+      if (pickedDices[i] == 1) {
+        if (diceThrows[i] == 2) {
+          counter++;
+        }
+      }
+    }
+    if (counter == 3) {
+      scoreD += 300;
+    }
+    counter = 0;
+
+    for (var i = 0; i <= 5; i++) {
+      if (pickedDices[i] == 1) {
+        if (diceThrows[i] == 3) {
+          counter++;
+        }
+      }
+    }
+    if (counter == 3) {
+      scoreD += 400;
+    }
+    counter = 0;
+
+    for (var i = 0; i <= 5; i++) {
+      if (pickedDices[i] == 1) {
+        if (diceThrows[i] == 4) {
+          counter++;
+        }
+      }
+    }
+    if (counter == 3) {
+      scoreD += 500;
+    }
+    counter = 0;
+
+    for (var i = 0; i <= 5; i++) {
+      if (pickedDices[i] == 1) {
+        if (diceThrows[i] == 5) {
+          counter++;
+        }
+      }
+    }
+    if (counter == 3) {
+      scoreD += 600;
+    }
+    counter = 0;
+    for (var i = 0; i <= 5; i++) {
+      if (pickedDices[i] == 1) {
+        if (diceThrows[i] == 0) {
+          counter++;
+        }
+      }
+    }
+    if (counter == 3) {
+      scoreD += 1000;
+    }
+    counter = 0;
+
+    for (var i = 0; i <= 5; i++) {
+      if (pickedDices[i] == 1) {
+        if (diceThrows[i] == 0) {
+          scoreD += 100;
+        }
+      }
+
+      for (var i = 0; i <= 5; i++) {
+        if (pickedDices[i] == 1) {
+          if (diceThrows[i] == 4) {
+            scoreD += 50;
+          }
+        }
+      }
+      return scoreD;
+    }
   }
 }
+//it all just works
