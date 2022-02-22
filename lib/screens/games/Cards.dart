@@ -16,7 +16,7 @@ class _CardsScr extends State<CardsScr> {
         ),
         body: Center(
             child: Column(
-          children: [Text("CardGame")],
+          children: [Text("chess clock")],
         )));
   }
 }

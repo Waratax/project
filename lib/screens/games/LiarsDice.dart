@@ -16,7 +16,7 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
         ),
         body: Center(
             child: Column(
-          children: [Text("LiarsDiceGame")],
+          children: [Text("figurky")],
         )));
   }
 }
