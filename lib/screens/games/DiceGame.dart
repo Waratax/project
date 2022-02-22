@@ -243,6 +243,7 @@ class _DiceGameScr extends State<DiceGameScr> {
 
   bool canBeChecked(n) {
     var counter = 0;
+    var temp = 0;
     if (diceThrows[n] == 0 || diceThrows[n] == 4) {
       pickedDiceValue = null;
       return true;
@@ -258,6 +259,19 @@ class _DiceGameScr extends State<DiceGameScr> {
 
       if (counter == 3) {
         return true;
+      } else if (counter > 3) {
+        for (var i = 0; i <= 5; i++) {
+          if (pickedDices[i] == 1) {
+            if (diceThrows[i] == diceThrows[n]) {
+              temp++;
+            }
+          }
+        }
+        if (temp > 3) {
+          return false;
+        } else {
+          return true;
+        }
       }
       return false;
     }
