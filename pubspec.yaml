@@ -57,6 +57,12 @@ flutter:
     - assets/graphics/img4.png
     - assets/graphics/img5.png
     - assets/graphics/img6.png
+    - assets/black.png
+    - assets/blue.png
+    - assets/green.png
+    - assets/red.png
+    - assets/yellow.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
