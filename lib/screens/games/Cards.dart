@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'dart:math';
 
 class CardsScr extends StatefulWidget {
   @override
@@ -16,7 +17,44 @@ class _CardsScr extends State<CardsScr> {
         ),
         body: Center(
             child: Column(
-          children: [Text("chess clock")],
+          children: [
+            Spacer(),
+            Container(
+                alignment: FractionalOffset.center,
+                transform: Matrix4.rotationX(pi),
+                child: Container(
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      child: Transform(
+                          transform: Matrix4.rotationY(pi),
+                          alignment: FractionalOffset.center,
+                          child: Text("sample time")),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.green,
+                      )),
+                )),
+            Spacer(),
+            Container(
+                child: Transform(
+                    transform: Matrix4.rotationX(pi),
+                    alignment: FractionalOffset.center,
+                    child: Transform(
+                        transform: Matrix4.rotationY(pi),
+                        alignment: FractionalOffset.center,
+                        child: Text("text")))),
+            Spacer(),
+            Container(
+                child: Align(
+              alignment: FractionalOffset.center,
+              child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text("sample time"),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green,
+                  )),
+            )),
+            Spacer(),
+          ],
         )));
   }
 }
