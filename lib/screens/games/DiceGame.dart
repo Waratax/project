@@ -36,7 +36,6 @@ class _DiceGameScr extends State<DiceGameScr> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
           title: Text("GAMES"),
         ),
         body: Center(

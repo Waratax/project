@@ -35,7 +35,7 @@ class _DiceScreen extends State<DiceScr> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("dice rolls"),
+          title: Text("GAMES"),
         ),
         body: Center(
           child: Column(
