@@ -18,6 +18,7 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
     "Start",
     "Start",
   ];
+  List laps = [0, 0, 0, 0, 0];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +47,8 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
             )),
             Row(
               children: [
-                Container(child: Text(position[0])),
+                Container(
+                    child: Text("pole: " + position[0] + "kolo: " + laps[0])),
                 Container(
                     child: FlatButton(
                   onPressed: () {},
@@ -76,7 +78,8 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
             Spacer(),
             Row(
               children: [
-                Container(child: Text(position[1])),
+                Container(
+                    child: Text("pole: " + position[1] + "kolo: " + laps[1])),
                 Container(
                   child: FlatButton(
                     onPressed: () {},
@@ -108,7 +111,8 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
             Spacer(),
             Row(
               children: [
-                Container(child: Text(position[2])),
+                Container(
+                    child: Text("pole: " + position[2] + "kolo: " + laps[2])),
                 Container(
                     child: FlatButton(
                   onPressed: () {},
@@ -139,7 +143,8 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
             Spacer(),
             Row(
               children: [
-                Container(child: Text(position[3])),
+                Container(
+                    child: Text("pole: " + position[3] + "kolo: " + laps[3])),
                 Container(
                     child: FlatButton(
                   onPressed: () {},
@@ -170,7 +175,8 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
             Spacer(),
             Row(
               children: [
-                Container(child: Text(position[4])),
+                Container(
+                    child: Text("pole: " + position[4] + "kolo: " + laps[4])),
                 Container(
                     child: FlatButton(
                   onPressed: () {},
@@ -221,6 +227,14 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
     if (position[playerNum] == "Start") {
       position[playerNum] = 0;
     }
-    position[playerNum] += moveByNumOfFields;
+    setState(() {
+      position[playerNum] += moveByNumOfFields;
+    });
+    if (position[playerNum] > numOfFields) {
+      setState(() {
+        position[playerNum] -= numOfFields;
+        laps[playerNum] += 1;
+      });
+    }
   }
 }
