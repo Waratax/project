@@ -1,5 +1,5 @@
 import 'dart:ffi';
-
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/services.dart';
@@ -10,7 +10,8 @@ class LiarsDiceScr extends StatefulWidget {
 }
 
 class _LiarsDiceScr extends State<LiarsDiceScr> {
-  int numOfFields = 40;
+  var numOfFields;
+  final _controller = TextEditingController();
   List position = [
     "Start",
     "Start",
@@ -31,24 +32,51 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
             Container(
                 child: ElevatedButton(
               onPressed: () {
-                var _controller;
                 showDialog(
                     context: context,
-                    builder: (_) => TextFormField(
-                          controller: _controller,
-                          keyboardType: TextInputType.number,
-                          inputFormatters: <TextInputFormatter>[
-                            FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                          ],
-                        ));
-                numOfFields = _controller;
+                    builder: (_) => AlertDialog(
+                            insetPadding: EdgeInsets.all(2),
+                            title: Text("pocet poli"),
+                            actions: [
+                              TextFormField(
+                                controller: _controller,
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp(r'[0-9]')),
+                                ],
+                                decoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    hintText: 'pocet poli na desce'),
+                              ),
+                              Row(
+                                children: [
+                                  ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text("cancel")),
+                                  Spacer(),
+                                  ElevatedButton(
+                                      onPressed: () {
+                                        numOfFields =
+                                            int.parse(_controller.text);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text("done")),
+                                ],
+                              )
+                            ]));
               },
               child: Text("zadej pocet policek na hraci desce"),
             )),
+            Container(
+                child: Text("pole: " +
+                    position[0].toString() +
+                    " kolo: " +
+                    laps[0].toString())),
             Row(
               children: [
-                Container(
-                    child: Text("pole: " + position[0] + "kolo: " + laps[0])),
                 Container(
                     child: FlatButton(
                   onPressed: () {},
@@ -67,7 +95,7 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                 Container(
                   child: ElevatedButton(
                     onPressed: () {
-                      move(0, getNumberOfFieldsForMove());
+                      getNumberOfFieldsForMove(0);
                     },
                     child: Text("Posun"),
                   ),
@@ -76,10 +104,13 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
               ],
             ),
             Spacer(),
+            Container(
+                child: Text("pole: " +
+                    position[1].toString() +
+                    " kolo: " +
+                    laps[1].toString())),
             Row(
               children: [
-                Container(
-                    child: Text("pole: " + position[1] + "kolo: " + laps[1])),
                 Container(
                   child: FlatButton(
                     onPressed: () {},
@@ -100,7 +131,7 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                 Container(
                   child: ElevatedButton(
                     onPressed: () {
-                      move(1, getNumberOfFieldsForMove());
+                      getNumberOfFieldsForMove(1);
                     },
                     child: Text("Posun"),
                   ),
@@ -109,10 +140,13 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
               ],
             ),
             Spacer(),
+            Container(
+                child: Text("pole: " +
+                    position[2].toString() +
+                    " kolo: " +
+                    laps[2].toString())),
             Row(
               children: [
-                Container(
-                    child: Text("pole: " + position[2] + "kolo: " + laps[2])),
                 Container(
                     child: FlatButton(
                   onPressed: () {},
@@ -132,7 +166,7 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                 Container(
                   child: ElevatedButton(
                     onPressed: () {
-                      move(2, getNumberOfFieldsForMove());
+                      getNumberOfFieldsForMove(2);
                     },
                     child: Text("Posun"),
                   ),
@@ -141,10 +175,13 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
               ],
             ),
             Spacer(),
+            Container(
+                child: Text("pole: " +
+                    position[3].toString() +
+                    " kolo: " +
+                    laps[3].toString())),
             Row(
               children: [
-                Container(
-                    child: Text("pole: " + position[3] + "kolo: " + laps[3])),
                 Container(
                     child: FlatButton(
                   onPressed: () {},
@@ -164,7 +201,7 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                 Container(
                   child: ElevatedButton(
                     onPressed: () {
-                      move(3, getNumberOfFieldsForMove());
+                      getNumberOfFieldsForMove(3);
                     },
                     child: Text("Posun"),
                   ),
@@ -173,10 +210,13 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
               ],
             ),
             Spacer(),
+            Container(
+                child: Text("pole: " +
+                    position[4].toString() +
+                    " kolo: " +
+                    laps[4].toString())),
             Row(
               children: [
-                Container(
-                    child: Text("pole: " + position[4] + "kolo: " + laps[4])),
                 Container(
                     child: FlatButton(
                   onPressed: () {},
@@ -196,7 +236,7 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                 Container(
                   child: ElevatedButton(
                     onPressed: () {
-                      move(4, getNumberOfFieldsForMove());
+                      getNumberOfFieldsForMove(4);
                     },
                     child: Text("Posun"),
                   ),
@@ -208,28 +248,62 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
         )));
   }
 
-  getNumberOfFieldsForMove() {
-    var _controller;
+  void getNumberOfFieldsForMove(playerNum) {
+    var numberOfFieldsForMove;
+    final _controller = TextEditingController();
     showDialog(
         context: context,
-        builder: (_) => TextFormField(
-              controller: _controller,
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-              ],
-            ));
+        builder: (_) => AlertDialog(
+                insetPadding: EdgeInsets.all(2),
+                title: Text("posun me"),
+                actions: [
+                  TextFormField(
+                    controller: _controller,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                    ],
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'o kolik se posunes'),
+                  ),
+                  Row(
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text("cancel")),
+                      Spacer(),
+                      ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              numberOfFieldsForMove =
+                                  int.parse(_controller.text);
+                            });
 
-    return _controller;
+                            Navigator.pop(context);
+                            move(playerNum, numberOfFieldsForMove);
+                          },
+                          child: Text("done")),
+                    ],
+                  )
+                ]));
   }
 
-  move(playerNum, moveByNumOfFields) {
+  move(playerNum, numberOfFieldsForMove) {
     if (position[playerNum] == "Start") {
       position[playerNum] = 0;
     }
     setState(() {
-      position[playerNum] += moveByNumOfFields;
+      position[playerNum] += numberOfFieldsForMove;
     });
+    if (position[playerNum] == numOfFields) {
+      setState(() {
+        position[playerNum] = "Start";
+        laps[playerNum] += 1;
+      });
+    }
     if (position[playerNum] > numOfFields) {
       setState(() {
         position[playerNum] -= numOfFields;
