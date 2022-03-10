@@ -1,5 +1,8 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter/services.dart';
 
 class LiarsDiceScr extends StatefulWidget {
   @override
@@ -7,11 +10,18 @@ class LiarsDiceScr extends StatefulWidget {
 }
 
 class _LiarsDiceScr extends State<LiarsDiceScr> {
+  int numOfFields = 40;
+  List position = [
+    "Start",
+    "Start",
+    "Start",
+    "Start",
+    "Start",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
           title: Text("GAMES"),
         ),
         body: Center(
@@ -19,11 +29,24 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
           children: [
             Container(
                 child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                var _controller;
+                showDialog(
+                    context: context,
+                    builder: (_) => TextFormField(
+                          controller: _controller,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                          ],
+                        ));
+                numOfFields = _controller;
+              },
               child: Text("zadej pocet policek na hraci desce"),
             )),
             Row(
               children: [
+                Container(child: Text(position[0])),
                 Container(
                     child: FlatButton(
                   onPressed: () {},
@@ -41,7 +64,9 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                 ),
                 Container(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      move(0, getNumberOfFieldsForMove());
+                    },
                     child: Text("Posun"),
                   ),
                   padding: EdgeInsets.all(8),
@@ -51,6 +76,7 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
             Spacer(),
             Row(
               children: [
+                Container(child: Text(position[1])),
                 Container(
                   child: FlatButton(
                     onPressed: () {},
@@ -70,7 +96,9 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                 ),
                 Container(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      move(1, getNumberOfFieldsForMove());
+                    },
                     child: Text("Posun"),
                   ),
                   padding: EdgeInsets.all(8),
@@ -80,6 +108,7 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
             Spacer(),
             Row(
               children: [
+                Container(child: Text(position[2])),
                 Container(
                     child: FlatButton(
                   onPressed: () {},
@@ -98,7 +127,9 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                 ),
                 Container(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      move(2, getNumberOfFieldsForMove());
+                    },
                     child: Text("Posun"),
                   ),
                   padding: EdgeInsets.all(8),
@@ -108,6 +139,7 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
             Spacer(),
             Row(
               children: [
+                Container(child: Text(position[3])),
                 Container(
                     child: FlatButton(
                   onPressed: () {},
@@ -126,7 +158,9 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                 ),
                 Container(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      move(3, getNumberOfFieldsForMove());
+                    },
                     child: Text("Posun"),
                   ),
                   padding: EdgeInsets.all(8),
@@ -136,6 +170,7 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
             Spacer(),
             Row(
               children: [
+                Container(child: Text(position[4])),
                 Container(
                     child: FlatButton(
                   onPressed: () {},
@@ -154,7 +189,9 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                 ),
                 Container(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      move(4, getNumberOfFieldsForMove());
+                    },
                     child: Text("Posun"),
                   ),
                   padding: EdgeInsets.all(8),
@@ -163,5 +200,27 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
             )
           ],
         )));
+  }
+
+  getNumberOfFieldsForMove() {
+    var _controller;
+    showDialog(
+        context: context,
+        builder: (_) => TextFormField(
+              controller: _controller,
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+              ],
+            ));
+
+    return _controller;
+  }
+
+  move(playerNum, moveByNumOfFields) {
+    if (position[playerNum] == "Start") {
+      position[playerNum] = 0;
+    }
+    position[playerNum] += moveByNumOfFields;
   }
 }
