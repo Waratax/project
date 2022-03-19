@@ -15,12 +15,16 @@ class _CardsScr extends State<CardsScr> {
   var incr = 2; //sec
   Timer? timerWhite;
   Timer? timerBlack;
+  var colorW = Colors.grey.shade800;
+  var colorB = Colors.grey.shade800;
 
   void startTimerWhite() {
     timerWhite = Timer.periodic(Duration(seconds: 1), (timer) {
       if (secondsW > 0) {
         setState(() {
           secondsW--;
+          colorB = Colors.grey.shade500;
+          colorW = Colors.grey.shade700;
         });
       }
     });
@@ -31,6 +35,8 @@ class _CardsScr extends State<CardsScr> {
       if (secondsB > 0) {
         setState(() {
           secondsB--;
+          colorW = Colors.grey.shade500;
+          colorB = Colors.grey.shade700;
         });
       }
     });
@@ -61,105 +67,120 @@ class _CardsScr extends State<CardsScr> {
         body: Center(
             child: Column(
           children: [
-            Spacer(),
-            Container(
-                alignment: FractionalOffset.center,
-                transform: Matrix4.rotationX(pi),
-                child: Container(
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: ElevatedButton(
+                    onPressed: () {
+                      bool isRunning =
+                          timerBlack == null ? false : timerBlack!.isActive;
+                      if (isRunning == true) {
+                        stopBlack();
+                        startTimerWhite();
+                      } else {}
+                    },
+                    child: Transform(
+                      transform: Matrix4.rotationZ(pi),
+                      alignment: FractionalOffset.center,
+                      child: Text(blackTime()),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: colorB,
+                    )),
+              ),
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Container(
+                  width: 150,
                   child: ElevatedButton(
                       onPressed: () {
-                        bool isRunning =
-                            timerBlack == null ? false : timerBlack!.isActive;
-                        if (isRunning == true) {
-                          stopBlack();
-                          startTimerWhite();
-                        } else {}
+                        stopBlack();
+                        stopWhiteTimer();
+                        showDialog(
+                            context: context,
+                            builder: (_) => AlertDialog(
+                                  insetPadding: EdgeInsets.all(2),
+                                  title: Text('MODE'),
+                                  content: Text('pick mode to play'),
+                                  actions: [
+                                    Row(children: [
+                                      Container(
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            setModeBullet();
+
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text("bullet 2|1"),
+                                        ),
+                                        padding: EdgeInsets.all(2),
+                                      ),
+                                      Container(
+                                        child: ElevatedButton(
+                                            onPressed: () {
+                                              setModeBlitz();
+
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text("blitz 3|2")),
+                                        padding: EdgeInsets.all(2),
+                                      ),
+                                      Container(
+                                        child: ElevatedButton(
+                                            onPressed: () {
+                                              setModeRapid();
+
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text("rapid 15|10")),
+                                        padding: EdgeInsets.all(2),
+                                      ),
+                                    ])
+                                  ],
+                                ));
                       },
-                      child: Transform(
-                        transform: Matrix4.rotationY(pi),
-                        alignment: FractionalOffset.center,
-                        child: Text(blackTime()),
-                      ),
+                      child: Text("mode selector"),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.grey.shade800,
+                        primary: Colors.lightBlue,
                       )),
-                )),
-            Spacer(),
-            Container(
-              child: ElevatedButton(
-                  onPressed: () {
-                    stopBlack();
-                    stopWhiteTimer();
-                    showDialog(
-                        context: context,
-                        builder: (_) => AlertDialog(
-                              insetPadding: EdgeInsets.all(2),
-                              title: Text('MODE'),
-                              content: Text('pick mode to play'),
-                              actions: [
-                                Row(children: [
-                                  Container(
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        setModeBullet();
-                                        startTimerWhite();
-
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text("bullet 2|1"),
-                                    ),
-                                    padding: EdgeInsets.all(2),
-                                  ),
-                                  Container(
-                                    child: ElevatedButton(
-                                        onPressed: () {
-                                          setModeBlitz();
-                                          startTimerWhite();
-
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text("blitz 3|2")),
-                                    padding: EdgeInsets.all(2),
-                                  ),
-                                  Container(
-                                    child: ElevatedButton(
-                                        onPressed: () {
-                                          setModeRapid();
-                                          startTimerWhite();
-
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text("rapid 15|10")),
-                                    padding: EdgeInsets.all(2),
-                                  ),
-                                ])
-                              ],
-                            ));
-                  },
-                  child: Text("mode selector"),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.lightBlue,
-                  )),
+                ),
+                Spacer(),
+                Container(
+                  width: 150,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        startTimerWhite();
+                      },
+                      child: Text("Start"),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.lightBlue,
+                      )),
+                ),
+                Spacer(),
+              ],
             ),
-            Spacer(),
-            Container(
-                child: Align(
-              alignment: FractionalOffset.center,
-              child: ElevatedButton(
-                  onPressed: () {
-                    bool isRunning =
-                        timerWhite == null ? false : timerWhite!.isActive;
-                    if (isRunning == true) {
-                      stopWhiteTimer();
-                      startTimerBlack();
-                    } else {}
-                  },
-                  child: Text(whiteTime()),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.grey.shade800,
-                  )),
-            )),
-            Spacer(),
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: ElevatedButton(
+                    onPressed: () {
+                      bool isRunning =
+                          timerWhite == null ? false : timerWhite!.isActive;
+                      if (isRunning == true) {
+                        stopWhiteTimer();
+                        startTimerBlack();
+                      } else {}
+                    },
+                    child: Text(whiteTime()),
+                    style: ElevatedButton.styleFrom(
+                      primary: colorW,
+                    )),
+              ),
+            ),
           ],
         )));
   }
