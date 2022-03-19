@@ -19,16 +19,21 @@ const PickerData = '''[
 
 class _DiceScreen extends State<DiceScr> {
   var rollValue;
+  List rollValues = [];
   var diceValue;
 
   void toggleRoll() {
     int temp = 0;
+    int sadface = 0;
     for (var i = 0; i < int.parse(diceValue[0]); i++) {
-      temp += Random().nextInt(int.parse(diceValue[1])) + 1;
+      temp = Random().nextInt(int.parse(diceValue[1])) + 1;
+      sadface += temp;
+      setState(() {
+        rollValues.add(temp);
+        rollValues.sort();
+        rollValue = sadface;
+      });
     }
-    setState(() {
-      rollValue = temp;
-    });
   }
 
   @override
@@ -44,28 +49,20 @@ class _DiceScreen extends State<DiceScr> {
                   child: Align(
                       alignment: FractionalOffset.topCenter,
                       child: Text("Choose your dice"))),
-
               ElevatedButton(
                 child: Text("dice value"),
                 onPressed: () {
                   showPickerArray(context);
                 },
               ),
-
-              Expanded(child: Text("$rollValue")),
-
+              Expanded(child: Text("$rollValue" + " " + "$rollValues")),
               ElevatedButton(
                   onPressed: () {
+                    rollValues = [];
                     toggleRoll();
                   },
                   child: Text('roll your dice')),
-
-              //End game
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text("UKONČIT HRU")),
+              Spacer(),
             ],
           ),
         ));
@@ -76,7 +73,7 @@ class _DiceScreen extends State<DiceScr> {
         adapter: PickerDataAdapter<String>(
             pickerdata: new JsonDecoder().convert(PickerData), isArray: true),
         hideHeader: true,
-        title: new Text("Please number of throws and a dice"),
+        title: new Text("Please select number of throws and a dice"),
         delimiter: [
           PickerDelimiter(
               child: Container(
