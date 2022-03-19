@@ -1,9 +1,7 @@
-import 'dart:ffi';
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/services.dart';
-import 'package:projekt/screens/games/DiceRoll.dart';
+import 'package:projekt/screens/log/users.dart' as globals;
 
 class LiarsDiceScr extends StatefulWidget {
   @override
@@ -278,8 +276,8 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                           child: FlatButton(
                               child: Image.asset(
                                 "assets/dice.png",
-                                height: 25,
-                                width: 25,
+                                height: 45,
+                                width: 45,
                               ),
                               onPressed: () {
                                 Navigator.pushNamed(context, '/diceRoll');
@@ -296,10 +294,14 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                       Spacer(),
                       ElevatedButton(
                           onPressed: () {
-                            setState(() {
-                              numberOfFieldsForMove =
-                                  int.parse(_controller.text);
-                            });
+                            try {
+                              setState(() {
+                                numberOfFieldsForMove =
+                                    int.parse(_controller.text);
+                              });
+                            } on Exception {
+                              numberOfFieldsForMove = globals.rollValue;
+                            }
 
                             Navigator.pop(context);
                             move(playerNum, numberOfFieldsForMove);

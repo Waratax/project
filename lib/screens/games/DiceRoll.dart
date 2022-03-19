@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:convert';
+import 'package:projekt/screens/log/users.dart' as globals;
 
 class DiceScr extends StatefulWidget {
   const DiceScr({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ const PickerData = '''[
 class _DiceScreen extends State<DiceScr> {
   var rollValue;
   List rollValues = [];
-  var diceValue;
+  List diceValue = ["1", "6"];
 
   void toggleRoll() {
     int temp = 0;
@@ -32,6 +33,7 @@ class _DiceScreen extends State<DiceScr> {
         rollValues.add(temp);
         rollValues.sort();
         rollValue = sadface;
+        globals.rollValue = rollValue;
       });
     }
   }
@@ -62,6 +64,12 @@ class _DiceScreen extends State<DiceScr> {
                     toggleRoll();
                   },
                   child: Text('roll your dice')),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("Done"),
+              ),
               Spacer(),
             ],
           ),
