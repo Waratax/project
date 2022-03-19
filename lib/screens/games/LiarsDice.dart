@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/services.dart';
+import 'package:projekt/screens/games/DiceRoll.dart';
 
 class LiarsDiceScr extends StatefulWidget {
   @override
@@ -257,15 +258,33 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                 insetPadding: EdgeInsets.all(2),
                 title: Text("posun me"),
                 actions: [
-                  TextFormField(
-                    controller: _controller,
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                  Row(
+                    children: [
+                      Container(
+                        width: 250,
+                        child: TextFormField(
+                          controller: _controller,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                          ],
+                          decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'o kolik se posunes'),
+                        ),
+                      ),
+                      Spacer(),
+                      Container(
+                          child: FlatButton(
+                              child: Image.asset(
+                                "assets/dice.png",
+                                height: 25,
+                                width: 25,
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/diceRoll');
+                              })),
                     ],
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'o kolik se posunes'),
                   ),
                   Row(
                     children: [
