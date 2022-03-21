@@ -465,4 +465,4 @@ class _DiceGameScr extends State<DiceGameScr> {
     }
   }
 }
-//it all just works
+//it all just works barely
