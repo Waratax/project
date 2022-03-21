@@ -85,11 +85,13 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                     width: 25,
                   ),
                 )),
-                Container(
-                  child: TextFormField(
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(), hintText: 'nickname')),
-                  width: 150,
+                Expanded(
+                  child: Container(
+                    child: TextFormField(
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'nickname')),
+                  ),
                 ),
                 Container(
                   child: ElevatedButton(
@@ -120,12 +122,13 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                     ),
                   ),
                 ),
-                Container(
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'nickname'),
+                Expanded(
+                  child: Container(
+                    child: TextFormField(
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'nickname')),
                   ),
-                  width: 150,
                 ),
                 Container(
                   child: ElevatedButton(
@@ -155,12 +158,13 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                     width: 25,
                   ),
                 )),
-                Container(
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'nickname'),
+                Expanded(
+                  child: Container(
+                    child: TextFormField(
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'nickname')),
                   ),
-                  width: 150,
                 ),
                 Container(
                   child: ElevatedButton(
@@ -190,12 +194,13 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                     width: 25,
                   ),
                 )),
-                Container(
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'nickname'),
+                Expanded(
+                  child: Container(
+                    child: TextFormField(
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'nickname')),
                   ),
-                  width: 150,
                 ),
                 Container(
                   child: ElevatedButton(
@@ -225,12 +230,13 @@ class _LiarsDiceScr extends State<LiarsDiceScr> {
                     width: 25,
                   ),
                 )),
-                Container(
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'nickname'),
+                Expanded(
+                  child: Container(
+                    child: TextFormField(
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'nickname')),
                   ),
-                  width: 150,
                 ),
                 Container(
                   child: ElevatedButton(
