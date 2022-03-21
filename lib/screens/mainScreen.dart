@@ -10,6 +10,8 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
+    double widthScr = MediaQuery.of(context).size.width;
+    double heightScr = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -18,13 +20,12 @@ class _MainScreenState extends State<MainScreen> {
         body: Center(
             child: Column(
           children: [
-            Spacer(),
             Row(
               children: [
-                Spacer(),
                 Container(
-                  width: 150,
-                  height: 150,
+                  width: widthScr * 0.5,
+                  height: widthScr * 0.5,
+                  padding: EdgeInsets.all(16),
                   child: ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(
@@ -35,10 +36,10 @@ class _MainScreenState extends State<MainScreen> {
                         primary: Colors.blueAccent.shade200,
                       )),
                 ),
-                Spacer(),
                 Container(
-                  width: 150,
-                  height: 150,
+                  width: widthScr * 0.5,
+                  height: widthScr * 0.5,
+                  padding: EdgeInsets.all(16),
                   child: ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, "/diceRoll"); //dice rolls
@@ -48,16 +49,14 @@ class _MainScreenState extends State<MainScreen> {
                         primary: Colors.blueAccent.shade200,
                       )),
                 ),
-                Spacer(),
               ],
             ),
-            Spacer(),
             Row(
               children: [
-                Spacer(),
                 Container(
-                  width: 150,
-                  height: 150,
+                  width: widthScr * 0.5,
+                  height: widthScr * 0.5,
+                  padding: EdgeInsets.all(16),
                   child: ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(
@@ -68,10 +67,10 @@ class _MainScreenState extends State<MainScreen> {
                         primary: Colors.blueAccent.shade200,
                       )),
                 ),
-                Spacer(),
                 Container(
-                  width: 150,
-                  height: 150,
+                  width: widthScr * 0.5,
+                  height: widthScr * 0.5,
+                  padding: EdgeInsets.all(16),
                   child: ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context,
@@ -82,13 +81,12 @@ class _MainScreenState extends State<MainScreen> {
                         primary: Colors.blueAccent.shade200,
                       )),
                 ),
-                Spacer(),
               ],
             ),
-            Spacer(),
             Container(
-              width: 150,
-              height: 150,
+              width: widthScr * 0.5,
+              height: widthScr * 0.5,
+              padding: EdgeInsets.all(16),
               child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, "/cards"); //card game for sure
@@ -98,7 +96,6 @@ class _MainScreenState extends State<MainScreen> {
                     primary: Colors.blueAccent.shade200,
                   )),
             ),
-            Spacer(),
           ],
         )));
   }
