@@ -11,7 +11,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     double widthScr = MediaQuery.of(context).size.width;
-    double heightScr = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
