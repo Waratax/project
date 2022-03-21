@@ -34,6 +34,7 @@ class _DiceGameScr extends State<DiceGameScr> {
   ];
   @override
   Widget build(BuildContext context) {
+    double widthScr = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
           title: Text("GAMES"),
@@ -66,146 +67,194 @@ class _DiceGameScr extends State<DiceGameScr> {
 
             Row(
               children: <Widget>[
-                FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        if (pickedDices[0] == 0) {
-                          pickedDices[0] = 1;
-                          if (canBeChecked(0) == true) {
-                            fItMateColorForEachDiceImSadNow[0] = Colors.yellow;
-                          } else {
-                            pickedDices[0] = 0;
-                          }
-                        } else {
-                          pickedDices[0] = 1;
-                          fItMateColorForEachDiceImSadNow[0] = Colors.yellow;
-                        }
-                      });
-                    },
-                    child: Image.asset(
-                      "assets/graphics/" + diceImgs[diceThrows[0]],
-                      height: 150,
-                      width: 150,
-                    ),
-                    color: fItMateColorForEachDiceImSadNow[0]),
-                FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        if (pickedDices[1] == 0) {
-                          pickedDices[1] = 1;
-                          if (canBeChecked(1) == true) {
-                            fItMateColorForEachDiceImSadNow[1] = Colors.yellow;
-                          } else {
-                            pickedDices[1] = 0;
-                          }
-                        } else {
-                          pickedDices[1] = 1;
-                          fItMateColorForEachDiceImSadNow[1] = Colors.yellow;
-                        }
-                      });
-                    },
-                    child: Image.asset(
-                      "assets/graphics/" + diceImgs[diceThrows[1]],
-                      height: 150,
-                      width: 150,
-                    ),
-                    color: fItMateColorForEachDiceImSadNow[1]),
+                Expanded(
+                  child: Container(
+                    width: widthScr * 0.4,
+                    height: widthScr * 0.4,
+                    child: FlatButton(
+                        onPressed: () {
+                          setState(() {
+                            if (pickedDices[0] == 0) {
+                              pickedDices[0] = 1;
+                              if (canBeChecked(0) == true) {
+                                fItMateColorForEachDiceImSadNow[0] =
+                                    Colors.yellow;
+                              } else {
+                                pickedDices[0] = 0;
+                              }
+                            } else {
+                              pickedDices[0] = 1;
+                              fItMateColorForEachDiceImSadNow[0] =
+                                  Colors.yellow;
+                            }
+                          });
+                        },
+                        child: Image.asset(
+                          "assets/graphics/" + diceImgs[diceThrows[0]],
+                          height: double.infinity,
+                          width: double.infinity,
+                        ),
+                        color: fItMateColorForEachDiceImSadNow[0]),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    width: widthScr * 0.4,
+                    height: widthScr * 0.4,
+                    child: FlatButton(
+                        onPressed: () {
+                          setState(() {
+                            if (pickedDices[1] == 0) {
+                              pickedDices[1] = 1;
+                              if (canBeChecked(1) == true) {
+                                fItMateColorForEachDiceImSadNow[1] =
+                                    Colors.yellow;
+                              } else {
+                                pickedDices[1] = 0;
+                              }
+                            } else {
+                              pickedDices[1] = 1;
+                              fItMateColorForEachDiceImSadNow[1] =
+                                  Colors.yellow;
+                            }
+                          });
+                        },
+                        child: Image.asset(
+                          "assets/graphics/" + diceImgs[diceThrows[1]],
+                          height: double.infinity,
+                          width: double.infinity,
+                        ),
+                        color: fItMateColorForEachDiceImSadNow[1]),
+                  ),
+                ),
               ],
             ),
             Row(
               children: <Widget>[
-                FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        if (pickedDices[2] == 0) {
-                          pickedDices[2] = 1;
-                          if (canBeChecked(2) == true) {
-                            fItMateColorForEachDiceImSadNow[2] = Colors.yellow;
-                          } else {
-                            pickedDices[2] = 0;
-                          }
-                        } else {
-                          pickedDices[2] = 1;
-                          fItMateColorForEachDiceImSadNow[2] = Colors.yellow;
-                        }
-                      });
-                    },
-                    child: Image.asset(
-                      "assets/graphics/" + diceImgs[diceThrows[2]],
-                      height: 150,
-                      width: 150,
-                    ),
-                    color: fItMateColorForEachDiceImSadNow[2]),
-                FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        if (pickedDices[3] == 0) {
-                          pickedDices[3] = 1;
-                          if (canBeChecked(3) == true) {
-                            fItMateColorForEachDiceImSadNow[3] = Colors.yellow;
-                          } else {
-                            pickedDices[3] = 0;
-                          }
-                        } else {
-                          pickedDices[3] = 1;
-                          fItMateColorForEachDiceImSadNow[3] = Colors.yellow;
-                        }
-                      });
-                    },
-                    child: Image.asset(
-                      "assets/graphics/" + diceImgs[diceThrows[3]],
-                      height: 150,
-                      width: 150,
-                    ),
-                    color: fItMateColorForEachDiceImSadNow[3]),
+                Expanded(
+                  child: Container(
+                    width: widthScr * 0.4,
+                    height: widthScr * 0.4,
+                    child: FlatButton(
+                        onPressed: () {
+                          setState(() {
+                            if (pickedDices[2] == 0) {
+                              pickedDices[2] = 1;
+                              if (canBeChecked(2) == true) {
+                                fItMateColorForEachDiceImSadNow[2] =
+                                    Colors.yellow;
+                              } else {
+                                pickedDices[2] = 0;
+                              }
+                            } else {
+                              pickedDices[2] = 1;
+                              fItMateColorForEachDiceImSadNow[2] =
+                                  Colors.yellow;
+                            }
+                          });
+                        },
+                        child: Image.asset(
+                          "assets/graphics/" + diceImgs[diceThrows[2]],
+                          height: double.infinity,
+                          width: double.infinity,
+                        ),
+                        color: fItMateColorForEachDiceImSadNow[2]),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    width: widthScr * 0.4,
+                    height: widthScr * 0.4,
+                    child: FlatButton(
+                        onPressed: () {
+                          setState(() {
+                            if (pickedDices[3] == 0) {
+                              pickedDices[3] = 1;
+                              if (canBeChecked(3) == true) {
+                                fItMateColorForEachDiceImSadNow[3] =
+                                    Colors.yellow;
+                              } else {
+                                pickedDices[3] = 0;
+                              }
+                            } else {
+                              pickedDices[3] = 1;
+                              fItMateColorForEachDiceImSadNow[3] =
+                                  Colors.yellow;
+                            }
+                          });
+                        },
+                        child: Image.asset(
+                          "assets/graphics/" + diceImgs[diceThrows[3]],
+                          height: double.infinity,
+                          width: double.infinity,
+                        ),
+                        color: fItMateColorForEachDiceImSadNow[3]),
+                  ),
+                ),
               ],
             ),
             Row(
               children: <Widget>[
-                FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        if (pickedDices[4] == 0) {
-                          pickedDices[4] = 1;
-                          if (canBeChecked(4) == true) {
-                            fItMateColorForEachDiceImSadNow[4] = Colors.yellow;
-                          } else {
-                            pickedDices[4] = 0;
-                          }
-                        } else {
-                          pickedDices[4] = 1;
-                          fItMateColorForEachDiceImSadNow[4] = Colors.yellow;
-                        }
-                      });
-                    },
-                    child: Image.asset(
-                      "assets/graphics/" + diceImgs[diceThrows[4]],
-                      height: 150,
-                      width: 150,
-                    ),
-                    color: fItMateColorForEachDiceImSadNow[4]),
-                FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        if (pickedDices[5] == 0) {
-                          pickedDices[5] = 1;
-                          if (canBeChecked(5) == true) {
-                            fItMateColorForEachDiceImSadNow[5] = Colors.yellow;
-                          } else {
-                            pickedDices[5] = 0;
-                          }
-                        } else {
-                          pickedDices[5] = 1;
-                          fItMateColorForEachDiceImSadNow[5] = Colors.yellow;
-                        }
-                      });
-                    },
-                    child: Image.asset(
-                      "assets/graphics/" + diceImgs[diceThrows[5]],
-                      height: 150,
-                      width: 150,
-                    ),
-                    color: fItMateColorForEachDiceImSadNow[5]),
+                Expanded(
+                  child: Container(
+                    width: widthScr * 0.4,
+                    height: widthScr * 0.4,
+                    child: FlatButton(
+                        onPressed: () {
+                          setState(() {
+                            if (pickedDices[4] == 0) {
+                              pickedDices[4] = 1;
+                              if (canBeChecked(4) == true) {
+                                fItMateColorForEachDiceImSadNow[4] =
+                                    Colors.yellow;
+                              } else {
+                                pickedDices[4] = 0;
+                              }
+                            } else {
+                              pickedDices[4] = 1;
+                              fItMateColorForEachDiceImSadNow[4] =
+                                  Colors.yellow;
+                            }
+                          });
+                        },
+                        child: Image.asset(
+                          "assets/graphics/" + diceImgs[diceThrows[4]],
+                          height: double.infinity,
+                          width: double.infinity,
+                        ),
+                        color: fItMateColorForEachDiceImSadNow[4]),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    width: widthScr * 0.4,
+                    height: widthScr * 0.4,
+                    child: FlatButton(
+                        onPressed: () {
+                          setState(() {
+                            if (pickedDices[5] == 0) {
+                              pickedDices[5] = 1;
+                              if (canBeChecked(5) == true) {
+                                fItMateColorForEachDiceImSadNow[5] =
+                                    Colors.yellow;
+                              } else {
+                                pickedDices[5] = 0;
+                              }
+                            } else {
+                              pickedDices[5] = 1;
+                              fItMateColorForEachDiceImSadNow[5] =
+                                  Colors.yellow;
+                            }
+                          });
+                        },
+                        child: Image.asset(
+                          "assets/graphics/" + diceImgs[diceThrows[5]],
+                          height: double.infinity,
+                          width: double.infinity,
+                        ),
+                        color: fItMateColorForEachDiceImSadNow[5]),
+                  ),
+                ),
               ],
             ),
             //Text(dicevalues),
